@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DNA to RNA | Momchi's Genetics Tools</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+<!-- Theme toggle in top-right corner -->
+<div class="floating-theme-toggle">
+  <span id="theme-label">🌞</span>
+  <label class="switch">
+    <input type="checkbox" id="themeToggle">
+    <span class="slider round"></span>
+  </label>
+</div>
+
+  <div class="container">
+ <div class="menu-bar">
+  <div class="topbar-buttons">
+    <a href="home.html" class="topbar-btn">Home</a>
+    <a href="about.html" class="topbar-btn">About</a>
+  </div>
+  
+  <div class="dropdown">
+    <button class="dropbtn">Tools ▾</button>
+    <div class="dropdown-content">  
+      <a href="dna.html">DNA Translator</a>
+      <a href="rna.html">RNA Translator</a>
+      <a href="dna_to_rna.html">DNA to RNA Converter</a>
+      <a href="rna_to_dna.html">RNA to DNA Converter</a>
+      <a href="reverse_comp.html">Reverse Complement</a>
+      <a href="orf.html">ORF Finder</a>
+      <a href="rna_orf.html">RNA ORF Finder</a>
+    </div>
+  </div>
+  <div class="dropdown">
+    <button class="dropbtn">Calculators ▾</button>
+    <div class="dropdown-content">  
+      <a href="dna.html">DNA Translator</a>
+      <a href="rna.html">RNA Translator</a>
+      <a href="dna_to_rna.html">DNA to RNA Converter</a>
+      <a href="rna_to_dna.html">RNA to DNA Converter</a>
+      <a href="reverse_comp.html">Reverse Complement</a>
+      <a href="orf.html">ORF Finder</a>
+      <a href="rna_orf.html">RNA ORF Finder</a>
+    </div>
+  </div>
+</div>
+    <h1>
+      <img src="Logo.png" alt="Logo" class="logo">
+  <span class="half1">DNA to RNA Converter Tool</span>
+  <span class="half2">| Momchi's Genetics Tools</span>
+</h1>
+
+    <label for="dna-input">Paste DNA Sequence (Plain or FASTA):</label>
+    <textarea id="dna-input" placeholder="e.g., >seq1\nATGCGTAA..." rows="8"></textarea>
+
+    <button onclick="convertDNAtoRNA()">Convert to RNA</button>
+
+    <h2>RNA Output:</h2>
+    <textarea id="rna-output" readonly rows="8"></textarea>
+<hr>
+    <p>
+     This tool converts DNA sequences into corresponding RNA. The tool supports DNA sequences written in either uppercase (A, T, G, C) or lowercase (a, t, g, c), and can also process sequences in FASTA format.
+
+    </p>
+
+  </div>
+
+  <script>
+    function convertDNAtoRNA() {
+      const input = document.getElementById("dna-input").value;
+      
+      // Remove FASTA headers and non-DNA characters
+      const lines = input.split(/\r?\n/).filter(line => !line.startsWith('>'));
+      const cleanedDNA = lines.join('').toUpperCase().replace(/[^ATCG]/g, '');
+
+      const rna = cleanedDNA.replace(/T/g, 'U');
+      document.getElementById("rna-output").value = rna;
+    }
+  </script>
+<script src="theme-toggle.js"></script>
+</body>
+</html>
