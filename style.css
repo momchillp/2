@@ -320,6 +320,7 @@ output {
 
  table {
   width: 100%;
+  max-width: 1400px
   border-collapse: collapse;
   margin-top: 20px;
   font-size: 14px;
